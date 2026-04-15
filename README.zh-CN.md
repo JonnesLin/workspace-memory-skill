@@ -30,12 +30,12 @@
 
 可以直接读取下面这个安装说明：
 
-`https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/.codex/INSTALL.md`
+`https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md`
 
 典型提示词：
 
 ```text
-Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/.codex/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md
 ```
 
 ## 使用方式
@@ -67,6 +67,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/w
 ## 仓库结构
 
 ```text
+INSTALL.agent.md
 .codex/INSTALL.md
 skills/workspace-memory/
 README.md

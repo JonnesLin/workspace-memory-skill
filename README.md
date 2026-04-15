@@ -30,12 +30,12 @@ Use this repository when you want an agent to:
 
 Install this skill bundle by following the instructions in:
 
-`https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/.codex/INSTALL.md`
+`https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md`
 
 Typical prompt:
 
 ```text
-Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/.codex/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md
 ```
 
 ## Using the Skill
@@ -67,6 +67,7 @@ Use $workspace-memory to migrate our scattered notes, scratch docs, and session 
 ## Repository Layout
 
 ```text
+INSTALL.agent.md
 .codex/INSTALL.md
 skills/workspace-memory/
 README.md

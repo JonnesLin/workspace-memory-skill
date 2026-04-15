@@ -1,42 +1,81 @@
-# Installing Workspace Memory Skill
+# Codex Installation Instructions for Workspace Memory Skill
 
-Install the workspace memory skill through native skill discovery.
+Use this file only when the current platform is Codex. The unified entrypoint for agents is `INSTALL.agent.md`.
 
-## Prerequisites
+## Goal
 
-- Git
+Install or update `workspace-memory` in the standard Codex layout.
 
-## Installation
+## Paths
 
-1. **Clone the repository:**
+- Repo path: `~/.codex/workspace-memory-skill`
+- Skill path inside repo: `~/.codex/workspace-memory-skill/skills/workspace-memory`
+- Activation path: `~/.agents/skills/workspace-memory`
+
+## Install Or Update
+
+1. **Install or update the repo:**
 
 ```bash
-git clone https://github.com/JonnesLin/workspace-memory-skill.git ~/.codex/workspace-memory-skill
+if [ -d ~/.codex/workspace-memory-skill/.git ]; then
+  git -C ~/.codex/workspace-memory-skill pull --ff-only
+else
+  mkdir -p ~/.codex
+  git clone https://github.com/JonnesLin/workspace-memory-skill.git ~/.codex/workspace-memory-skill
+fi
 ```
 
-2. **Create the skills symlink:**
+2. **Create or repair the skill symlink:**
 
 ```bash
 mkdir -p ~/.agents/skills
-ln -s ~/.codex/workspace-memory-skill/skills ~/.agents/skills/workspace-memory-skill
+if [ -L ~/.agents/skills/workspace-memory ]; then
+  rm ~/.agents/skills/workspace-memory
+elif [ -e ~/.agents/skills/workspace-memory ]; then
+  echo "~/.agents/skills/workspace-memory exists and is not a symlink; inspect it manually."
+  exit 1
+fi
+ln -s ~/.codex/workspace-memory-skill/skills/workspace-memory ~/.agents/skills/workspace-memory
 ```
 
 **Windows (PowerShell):**
 
 ```powershell
-New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills"
-cmd /c mklink /J "$env:USERPROFILE\.agents\skills\workspace-memory-skill" "$env:USERPROFILE\.codex\workspace-memory-skill\skills"
+if (Test-Path "$env:USERPROFILE\.codex\workspace-memory-skill\.git") {
+  git -C "$env:USERPROFILE\.codex\workspace-memory-skill" pull --ff-only
+} else {
+  New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.codex" | Out-Null
+  git clone https://github.com/JonnesLin/workspace-memory-skill.git "$env:USERPROFILE\.codex\workspace-memory-skill"
+}
+
+New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills" | Out-Null
+if (Test-Path "$env:USERPROFILE\.agents\skills\workspace-memory") {
+  $item = Get-Item "$env:USERPROFILE\.agents\skills\workspace-memory"
+  if (-not $item.LinkType) {
+    throw "$env:USERPROFILE\.agents\skills\workspace-memory exists and is not a link; inspect it manually."
+  }
+  Remove-Item "$env:USERPROFILE\.agents\skills\workspace-memory" -Force
+}
+cmd /c mklink /J "$env:USERPROFILE\.agents\skills\workspace-memory" "$env:USERPROFILE\.codex\workspace-memory-skill\skills\workspace-memory"
 ```
 
-3. **Restart your agent runtime** to discover the skill bundle.
+3. **Restart Codex** after installation or update.
 
 ## Verify
 
+Run:
+
 ```bash
-ls -la ~/.agents/skills/workspace-memory-skill
+git -C ~/.codex/workspace-memory-skill branch --show-current
+git -C ~/.codex/workspace-memory-skill rev-parse --short HEAD
+ls -la ~/.agents/skills/workspace-memory
 ```
 
-You should see a symlink (or junction on Windows) pointing to this repository's `skills` directory.
+Expected:
+
+- branch is `main`
+- a short commit hash is printed
+- `~/.agents/skills/workspace-memory` points to `~/.codex/workspace-memory-skill/skills/workspace-memory`
 
 ## Use
 
@@ -46,21 +85,13 @@ After restart, try:
 Use $workspace-memory to set up shared memory for this workspace.
 ```
 
-## Updating
+## Uninstall
 
 ```bash
-cd ~/.codex/workspace-memory-skill && git pull
+rm ~/.agents/skills/workspace-memory
 ```
 
-Updates become available through the symlink after the next runtime launch.
-
-## Uninstalling
-
-```bash
-rm ~/.agents/skills/workspace-memory-skill
-```
-
-Optionally remove the clone:
+Optionally remove the repo clone:
 
 ```bash
 rm -rf ~/.codex/workspace-memory-skill
