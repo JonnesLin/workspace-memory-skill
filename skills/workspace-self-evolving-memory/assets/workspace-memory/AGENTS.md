@@ -1,0 +1,79 @@
+# Workspace Agent Instructions
+
+Treat this file as the entry point for every session in this workspace.
+
+For non-trivial tasks, read the following files before doing project-specific reasoning, planning, implementation, debugging, or status reporting:
+
+- `PROJECT_PROGRESS.md`
+- `WORKING_MEMORY.md`
+
+## Scope
+
+- These instructions apply to the entire workspace root.
+- The memory files are shared across projects in this workspace.
+- Always identify the target project or path before doing project-specific work.
+
+## Session Start Protocol
+
+For any non-trivial task:
+
+1. Read `PROJECT_PROGRESS.md`.
+2. Read `WORKING_MEMORY.md`.
+3. Identify the target project or subdirectory.
+4. Use both files to align with recent progress, open issues, preferences, and constraints.
+
+You may skip steps 1 and 2 only for tasks that are clearly context-free, such as:
+
+- pure translation
+- isolated rewriting or formatting
+- a one-off shell command with no project impact
+- casual Q and A unrelated to the workspace
+
+## During the Session
+
+- Use `PROJECT_PROGRESS.md` to understand recent work, resolved issues, open problems, and likely next steps.
+- Use `WORKING_MEMORY.md` to understand durable preferences, workflow habits, project constraints, and reusable lessons.
+- Prefer concise summaries and durable decisions over raw transcript-style notes.
+
+## Session Closeout
+
+Before claiming completion for any non-trivial session:
+
+1. Decide whether `PROJECT_PROGRESS.md` should be updated.
+2. Decide whether `WORKING_MEMORY.md` should be updated.
+3. Update the files when the session created useful memory for future sessions.
+
+If neither file needs a change, do not add filler just to satisfy the process.
+
+## Update Rules
+
+Update `PROJECT_PROGRESS.md` when:
+
+- project state changed
+- meaningful investigation happened
+- a bug or blocker was resolved
+- a decision clarified the current state or next step
+- planning or architecture materially changed project direction
+
+Update `WORKING_MEMORY.md` only when the session revealed durable information such as:
+
+- user preferences
+- project-wide constraints
+- workflow habits
+- naming or style expectations
+- recurring pitfalls and proven resolutions
+
+## Writing Rules
+
+- Write shared memory content in English unless the workspace specifies otherwise.
+- Preserve prior entries in `PROJECT_PROGRESS.md` and add each new session entry at the top of the log.
+- Include the affected project or path in each progress entry.
+- In progress entries, record what changed, what was solved, what problems appeared, and what remains next.
+- Keep `WORKING_MEMORY.md` curated and deduplicated rather than chronological.
+- Record both the problem and the solution when the lesson is reusable.
+
+## Archive And Grooming
+
+- Keep `AGENTS.md`, `PROJECT_PROGRESS.md`, and `WORKING_MEMORY.md` at the workspace root.
+- Archive older progress entries under `archive/project-progress/` when the main log becomes noisy.
+- Use `memory/grooming-checklist.md` for periodic cleanup.

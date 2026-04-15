@@ -1,0 +1,4 @@
+interface:
+  display_name: "Workspace Self-Evolving Memory"
+  short_description: "Set up and maintain shared workspace memory"
+  default_prompt: "Use $workspace-self-evolving-memory to set up and maintain AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md for this workspace."
