@@ -1,6 +1,6 @@
-# Installing Workspace Self-Evolving Skill for Codex
+# Installing Workspace Self-Evolving Skill
 
-Enable the workspace memory skill in Codex via native skill discovery.
+Install the workspace memory skill through native skill discovery.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ New-Item -ItemType Directory -Force -Path "$env:USERPROFILE\.agents\skills"
 cmd /c mklink /J "$env:USERPROFILE\.agents\skills\workspace-self-evolving-skill" "$env:USERPROFILE\.codex\workspace-self-evolving-skill\skills"
 ```
 
-3. **Restart Codex** to discover the skill bundle.
+3. **Restart your agent runtime** to discover the skill bundle.
 
 ## Verify
 
@@ -52,7 +52,7 @@ Use $workspace-self-evolving-memory to set up shared memory for this workspace.
 cd ~/.codex/workspace-self-evolving-skill && git pull
 ```
 
-Updates become available through the symlink after the next Codex launch.
+Updates become available through the symlink after the next runtime launch.
 
 ## Uninstalling
 

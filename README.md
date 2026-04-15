@@ -2,7 +2,7 @@
 
 [中文说明](README.zh-CN.md)
 
-Codex skill bundle for setting up and maintaining a shared workspace memory system built around:
+Reusable skill bundle for setting up and maintaining a shared workspace memory system built around:
 
 - `AGENTS.md`
 - `PROJECT_PROGRESS.md`
@@ -16,7 +16,7 @@ This repository exposes one skill:
 
 ## What It Helps With
 
-Use this repository when you want Codex to:
+Use this repository when you want an agent to:
 
 - bootstrap shared workspace memory in a new repo or workspace
 - migrate ad hoc notes into a structured memory system
@@ -26,7 +26,7 @@ Use this repository when you want Codex to:
 
 ## Installation
 
-Codex can install this skill bundle by following the instructions in:
+Install this skill bundle by following the instructions in:
 
 `https://raw.githubusercontent.com/JonnesLin/workspace-self-evolving-skill/refs/heads/main/.codex/INSTALL.md`
 
@@ -38,7 +38,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/w
 
 ## Using the Skill
 
-After installation, ask Codex to use:
+After installation, invoke the skill with:
 
 ```text
 Use $workspace-self-evolving-memory to set up shared memory for this workspace.
@@ -72,12 +72,3 @@ Inside the skill:
 - `SKILL.md` contains the agent workflow
 - `references/protocol.md` contains the detailed operating model
 - `assets/workspace-memory/` contains reusable templates
-
-## Language Support
-
-The repository documentation is bilingual:
-
-- `README.md` in English
-- `README.zh-CN.md` in Chinese
-
-The skill itself is written in English for better agent reliability and maintainability.

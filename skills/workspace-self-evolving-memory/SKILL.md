@@ -1,6 +1,6 @@
 ---
 name: workspace-self-evolving-memory
-description: Use when Codex needs to set up, audit, migrate, or maintain a shared workspace memory system built around AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md, especially when project context is being lost across sessions, logs are getting noisy, or a team wants lightweight archive and grooming rules without overbuilding.
+description: Use when an agent needs to set up, audit, migrate, or maintain a shared workspace memory system built around AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md, especially when project context is being lost across sessions, logs are getting noisy, or a team wants lightweight archive and grooming rules without overbuilding.
 ---
 
 # Workspace Self Evolving Memory
