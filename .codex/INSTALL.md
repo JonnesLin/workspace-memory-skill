@@ -43,7 +43,7 @@ You should see a symlink (or junction on Windows) pointing to this repository's 
 After restart, try:
 
 ```text
-Use $workspace-self-evolving-memory to set up shared memory for this workspace.
+Use $workspace-memory to set up shared memory for this workspace.
 ```
 
 ## Updating

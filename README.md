@@ -12,7 +12,7 @@ Reusable skill bundle for setting up and maintaining a shared workspace memory s
 
 This repository exposes one skill:
 
-- `$workspace-self-evolving-memory`
+- `$workspace-memory`
 
 ## What It Helps With
 
@@ -41,28 +41,28 @@ Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/w
 After installation, invoke the skill with:
 
 ```text
-Use $workspace-self-evolving-memory to set up shared memory for this workspace.
+Use $workspace-memory to set up shared memory for this workspace.
 ```
 
 Examples:
 
 ```text
-Use $workspace-self-evolving-memory to create AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md for this repo.
+Use $workspace-memory to create AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md for this repo.
 ```
 
 ```text
-Use $workspace-self-evolving-memory to audit our current project progress log and working memory, then reorganize them.
+Use $workspace-memory to audit our current project progress log and working memory, then reorganize them.
 ```
 
 ```text
-Use $workspace-self-evolving-memory to add archive and grooming rules without making the system too heavy.
+Use $workspace-memory to add archive and grooming rules without making the system too heavy.
 ```
 
 ## Repository Layout
 
 ```text
 .codex/INSTALL.md
-skills/workspace-self-evolving-memory/
+skills/workspace-memory/
 README.md
 README.zh-CN.md
 ```

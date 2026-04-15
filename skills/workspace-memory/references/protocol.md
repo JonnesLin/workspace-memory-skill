@@ -1,4 +1,4 @@
-# Workspace Self-Evolving Memory Protocol
+# Workspace Memory Protocol
 
 Use this reference when setting up, auditing, or refactoring a workspace memory system.
 
