@@ -2,6 +2,8 @@
 
 [English README](README.md)
 
+一个用 `AGENTS.md`、`PROJECT_PROGRESS.md` 和 `WORKING_MEMORY.md` 为工作区建立轻量共享记忆体系的通用 skill。
+
 这是一个通用的 workspace memory skill 仓库，用来为工作区建立和维护一套共享记忆系统，核心围绕下面这些文件和目录：
 
 - `AGENTS.md`
@@ -41,21 +43,25 @@ Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/w
 安装完成后，可以直接这样调用：
 
 ```text
-Use $workspace-memory to set up shared memory for this workspace.
+使用 $workspace-memory 为这个 workspace 搭建共享 memory 系统。
 ```
 
 也可以这样说：
 
 ```text
-Use $workspace-memory to create AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md for this repo.
+使用 $workspace-memory 为这个仓库创建 AGENTS.md、PROJECT_PROGRESS.md 和 WORKING_MEMORY.md。
 ```
 
 ```text
-Use $workspace-memory to audit our current project progress log and working memory, then reorganize them.
+使用 $workspace-memory 审查我们当前的 project progress log 和 working memory，然后重新整理它们。
 ```
 
 ```text
-Use $workspace-memory to add archive and grooming rules without making the system too heavy.
+使用 $workspace-memory 给这套系统加上 archive 和 grooming 规则，但不要把它做得太重。
+```
+
+```text
+使用 $workspace-memory 把我们零散的 notes、scratch docs 和 session logs 迁移进 AGENTS.md、PROJECT_PROGRESS.md 和 WORKING_MEMORY.md。
 ```
 
 ## 仓库结构

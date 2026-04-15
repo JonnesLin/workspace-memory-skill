@@ -2,6 +2,8 @@
 
 [中文说明](README.zh-CN.md)
 
+A reusable skill for setting up lightweight shared workspace memory with `AGENTS.md`, `PROJECT_PROGRESS.md`, and `WORKING_MEMORY.md`.
+
 Reusable skill bundle for setting up and maintaining a shared workspace memory system built around:
 
 - `AGENTS.md`
@@ -56,6 +58,10 @@ Use $workspace-memory to audit our current project progress log and working memo
 
 ```text
 Use $workspace-memory to add archive and grooming rules without making the system too heavy.
+```
+
+```text
+Use $workspace-memory to migrate our scattered notes, scratch docs, and session logs into AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md.
 ```
 
 ## Repository Layout
