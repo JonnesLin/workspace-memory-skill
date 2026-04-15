@@ -10,8 +10,8 @@ Install or update `workspace-memory` for the current platform, using the platfor
 
 1. Detect the current platform first. Prefer runtime or tooling context over filesystem guessing.
 2. Prefer updating an existing installation over creating a second copy.
-3. Prefer a full-repo install when the platform supports repo-based extensions or native skill folders.
-4. Only use a manual fallback when the platform is unclear or cannot activate the skill directly.
+3. Prefer a full-repo install when the platform supports repo-based extensions or native skill folders. This project ships a skill plus reusable templates and install metadata.
+4. Only use a skill-directory or manual fallback when the platform cannot activate the full repo layout directly.
 5. Do not delete unrelated files or directories. If an activation symlink is wrong, replace only that symlink.
 6. After finishing, report:
    - installed repo path
@@ -51,6 +51,64 @@ Use this branch if you are running inside Claude Code or the environment clearly
 3. If the activation path exists but is not a symlink to the repo skill directory, repair only that path
 4. Tell the user to restart Claude Code after installation or update
 
+### Gemini CLI
+
+Use this branch if you are running inside Gemini CLI.
+
+Preferred approach:
+
+1. Use Gemini's native extension flow if the current runtime can install directly from a GitHub repository
+2. Use this repository as the source:
+   `https://github.com/JonnesLin/workspace-memory-skill`
+3. If the extension is already installed, update it using Gemini's normal extension update flow if available
+
+Fallback approach:
+
+1. Clone or update the repo in a local path such as `~/workspace-memory-skill`
+2. Register the repo or `skills/workspace-memory` with Gemini's manual extension workflow if the current Gemini runtime requires manual registration
+
+### Cursor
+
+Use this branch if you are running inside Cursor.
+
+Preferred approach:
+
+1. Use Cursor's native extension or plugin flow if it is available in the current runtime
+2. Install or update this repo as the extension source
+
+Fallback approach:
+
+1. Clone or update the repo in a local path
+2. Point Cursor at the repo or skill directory if manual registration is still required by the current environment
+
+### OpenCode
+
+Use this branch if you are running inside OpenCode.
+
+Preferred approach:
+
+1. Use OpenCode's native plugin or extension flow if it supports GitHub or local-repo sources
+2. Install or update this repo as the source for the extension
+
+Fallback approach:
+
+1. Clone or update the repo in a local path
+2. Register the repo or `skills/workspace-memory` through OpenCode's manual plugin workflow if the current environment requires it
+
+### GitHub Copilot CLI
+
+Use this branch if you are running inside GitHub Copilot CLI.
+
+Preferred approach:
+
+1. Use Copilot CLI's native plugin flow if it supports GitHub or local-repo sources for this environment
+2. Install or update this repo through that normal plugin path
+
+Fallback approach:
+
+1. Clone or update the repo in a local path
+2. Register the skill manually if the current Copilot runtime exposes a manual extension workflow
+
 ### Unknown or Mixed Environment
 
 If the environment is unclear:
@@ -58,7 +116,8 @@ If the environment is unclear:
 1. Say which signals were ambiguous
 2. Prefer a conservative full-repo clone to a neutral path such as `~/workspace-memory-skill`
 3. If the runtime has a known skill directory, link `skills/workspace-memory` into it
-4. Do not pretend activation is complete unless you can verify the platform activation path
+4. If the runtime expects plugin registration rather than skill symlinks, stop at a verified local repo clone unless you can confirm the activation path
+5. Do not pretend activation is complete unless you can verify the platform activation path
 
 ## Update Policy
 
