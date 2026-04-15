@@ -1,4 +1,4 @@
-# Workspace Self-Evolving Skill
+# Workspace Memory Skill
 
 [中文说明](README.zh-CN.md)
 
@@ -28,12 +28,12 @@ Use this repository when you want an agent to:
 
 Install this skill bundle by following the instructions in:
 
-`https://raw.githubusercontent.com/JonnesLin/workspace-self-evolving-skill/refs/heads/main/.codex/INSTALL.md`
+`https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/.codex/INSTALL.md`
 
 Typical prompt:
 
 ```text
-Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-self-evolving-skill/refs/heads/main/.codex/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/.codex/INSTALL.md
 ```
 
 ## Using the Skill

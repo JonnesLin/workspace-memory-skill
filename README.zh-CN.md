@@ -1,4 +1,4 @@
-# Workspace Self-Evolving Skill
+# Workspace Memory Skill
 
 [English README](README.md)
 
@@ -28,12 +28,12 @@
 
 可以直接读取下面这个安装说明：
 
-`https://raw.githubusercontent.com/JonnesLin/workspace-self-evolving-skill/refs/heads/main/.codex/INSTALL.md`
+`https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/.codex/INSTALL.md`
 
 典型提示词：
 
 ```text
-Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-self-evolving-skill/refs/heads/main/.codex/INSTALL.md
+Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/.codex/INSTALL.md
 ```
 
 ## 使用方式
