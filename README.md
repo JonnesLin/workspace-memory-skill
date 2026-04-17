@@ -2,15 +2,18 @@
 
 [中文说明](README.zh-CN.md)
 
-A reusable skill for setting up lightweight shared workspace memory with `AGENTS.md`, `PROJECT_PROGRESS.md`, and `WORKING_MEMORY.md`.
+A reusable skill for setting up lightweight shared workspace memory with a canonical `AGENTS.md` (plus per-AI entry shims such as `CLAUDE.md` or `GEMINI.md`), `PROJECT_PROGRESS.md`, and `WORKING_MEMORY.md`.
 
 Reusable skill bundle for setting up and maintaining a shared workspace memory system built around:
 
-- `AGENTS.md`
+- `AGENTS.md` — canonical entry file, single source of truth for protocol rules
+- `CLAUDE.md`, `GEMINI.md`, `.github/copilot-instructions.md` — optional thin shims that redirect to `AGENTS.md`, added only for AIs actually used in this workspace
 - `PROJECT_PROGRESS.md`
 - `WORKING_MEMORY.md`
 - `archive/project-progress/`
 - `memory/grooming-checklist.md`
+
+Codex, OpenAI-style agents, OpenCode, and Cursor read `AGENTS.md` natively, so no shim is needed for those tools.
 
 This repository exposes one skill:
 
@@ -49,7 +52,7 @@ Use $workspace-memory to set up shared memory for this workspace.
 Examples:
 
 ```text
-Use $workspace-memory to create AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md for this repo.
+Use $workspace-memory to create AGENTS.md, PROJECT_PROGRESS.md, and WORKING_MEMORY.md for this repo, plus the right per-AI entry shim for the tool I'm using.
 ```
 
 ```text

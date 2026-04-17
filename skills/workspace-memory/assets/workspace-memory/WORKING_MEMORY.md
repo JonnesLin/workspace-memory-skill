@@ -10,7 +10,7 @@ Update this file selectively. It is not a raw session log.
 
 ## Workspace Workflow Rules
 
-- Treat `AGENTS.md` as the session entry point.
+- Treat `AGENTS.md` as the canonical session entry point. Any per-AI entry file (for example `CLAUDE.md` or `GEMINI.md`) is a thin shim that redirects to `AGENTS.md`.
 - For non-trivial tasks, read `PROJECT_PROGRESS.md` and `WORKING_MEMORY.md` before project-specific reasoning or edits.
 - For trivial or context-free tasks, reading the memory files may be skipped.
 - Before finishing a non-trivial session, decide whether either memory file should be updated.

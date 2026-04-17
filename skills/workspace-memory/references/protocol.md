@@ -8,12 +8,17 @@ Use this reference when setting up, auditing, or refactoring a workspace memory 
 - Preserve recent project state.
 - Preserve durable lessons separately from session logs.
 - Avoid turning memory into a second documentation system.
+- Keep protocol rules in exactly one file and let per-AI entry files redirect to it.
 
 ## Recommended Root Layout
 
 ```text
 <workspace-root>/
-  AGENTS.md
+  AGENTS.md              # canonical entry file
+  CLAUDE.md              # optional shim, only if Claude Code is used
+  GEMINI.md              # optional shim, only if Gemini CLI is used
+  .github/
+    copilot-instructions.md   # optional shim, only if GitHub Copilot is used
   PROJECT_PROGRESS.md
   WORKING_MEMORY.md
   archive/
@@ -22,9 +27,32 @@ Use this reference when setting up, auditing, or refactoring a workspace memory 
     grooming-checklist.md
 ```
 
+## Entry File Model
+
+### Canonical file
+
+Use `AGENTS.md` as the single source of truth for protocol and read/write rules. Codex, OpenAI-style agents, OpenCode, and Cursor all auto-load it by default.
+
+### Per-AI shims
+
+Some AIs auto-load a different default filename. For each such AI that is actually used in the workspace, create a thin shim that redirects to `AGENTS.md`:
+
+| AI | Shim path | Role |
+| --- | --- | --- |
+| Claude Code | `CLAUDE.md` | Redirect to `AGENTS.md` |
+| Gemini CLI | `GEMINI.md` | Redirect to `AGENTS.md` |
+| GitHub Copilot (IDE / coding agent) | `.github/copilot-instructions.md` | Redirect to `AGENTS.md` |
+
+Shim rules:
+
+- Keep each shim to a short pointer plus an empty overrides section.
+- Do not copy the canonical protocol into a shim.
+- Only create shims for AIs that are actually used in this workspace.
+- Delete unused shims during grooming.
+
 ## File Responsibilities
 
-### `AGENTS.md`
+### Canonical entry file (`AGENTS.md`)
 
 Use as the workspace entrypoint.
 
@@ -92,11 +120,16 @@ Do not create a separate archive for `WORKING_MEMORY.md` unless there is a stron
 - rewrite session-specific notes into durable lessons
 - remove notes that no longer change future behavior
 
+### Shim grooming
+
+- remove shim files for AIs that are no longer used in this workspace
+- check that each remaining shim still points to the canonical entry file and has not drifted into duplicated protocol text
+
 ## Default Read Path
 
 For non-trivial tasks:
 
-1. Read `AGENTS.md`.
+1. Read the canonical entry file (`AGENTS.md`); treat any per-AI shim as a redirect only.
 2. Read the top snapshot in `PROJECT_PROGRESS.md`.
 3. Read the recent relevant progress entries.
 4. Read `WORKING_MEMORY.md`.
@@ -122,5 +155,7 @@ If the workspace has no stronger preference, use:
 - putting every session detail into `WORKING_MEMORY.md`
 - archiving too early and hiding active context
 - storing policies in three different files
+- duplicating the canonical protocol into every per-AI shim
+- creating shims for AIs that are not actually used in this workspace
 - treating memory as a hard gate instead of a useful operating aid
 - keeping old progress in the main file until startup becomes slow and noisy

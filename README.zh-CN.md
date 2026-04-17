@@ -2,15 +2,18 @@
 
 [English README](README.md)
 
-一个用 `AGENTS.md`、`PROJECT_PROGRESS.md` 和 `WORKING_MEMORY.md` 为工作区建立轻量共享记忆体系的通用 skill。
+一个用规范入口 `AGENTS.md`（以及针对不同 AI 的薄 shim，比如 `CLAUDE.md`、`GEMINI.md`）、`PROJECT_PROGRESS.md` 和 `WORKING_MEMORY.md` 为工作区建立轻量共享记忆体系的通用 skill。
 
 这是一个通用的 workspace memory skill 仓库，用来为工作区建立和维护一套共享记忆系统，核心围绕下面这些文件和目录：
 
-- `AGENTS.md`
+- `AGENTS.md`：规范入口文件，协议规则的唯一真源
+- `CLAUDE.md`、`GEMINI.md`、`.github/copilot-instructions.md`：可选的薄 shim，只转发到 `AGENTS.md`，只为实际使用的 AI 创建
 - `PROJECT_PROGRESS.md`
 - `WORKING_MEMORY.md`
 - `archive/project-progress/`
 - `memory/grooming-checklist.md`
+
+Codex、OpenAI 风格的 agent、OpenCode 和 Cursor 原生就会读取 `AGENTS.md`，这几个工具不需要额外的 shim。
 
 这个仓库当前提供一个 skill：
 
@@ -49,7 +52,7 @@ Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/w
 也可以这样说：
 
 ```text
-使用 $workspace-memory 为这个仓库创建 AGENTS.md、PROJECT_PROGRESS.md 和 WORKING_MEMORY.md。
+使用 $workspace-memory 为这个仓库创建 AGENTS.md、PROJECT_PROGRESS.md 和 WORKING_MEMORY.md，并为我当前用的 AI 生成对应的入口 shim。
 ```
 
 ```text

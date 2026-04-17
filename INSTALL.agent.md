@@ -156,7 +156,7 @@ Do you want me to add a global hint to your user-level AGENTS.md / CLAUDE.md so 
 Suggested snippet:
 
 ```text
-When a workspace starts losing context across sessions, or when AGENTS.md / PROJECT_PROGRESS.md / WORKING_MEMORY.md need to be set up or reorganized, prefer the installed `workspace-memory` skill.
+When a workspace starts losing context across sessions, or when the canonical AGENTS.md (plus any per-AI entry shim such as CLAUDE.md or GEMINI.md) / PROJECT_PROGRESS.md / WORKING_MEMORY.md need to be set up or reorganized, prefer the installed `workspace-memory` skill.
 
 If `workspace-memory` is missing or appears outdated, fetch and follow instructions from:
 https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md

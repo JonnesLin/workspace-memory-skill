@@ -1,6 +1,8 @@
 # Workspace Agent Instructions
 
-Treat this file as the entry point for every session in this workspace.
+This is the canonical entry file for every session in this workspace.
+
+Other per-AI entry files in this workspace (for example `CLAUDE.md` or `GEMINI.md`) are thin shims that redirect here. Keep protocol rules in this file only.
 
 For non-trivial tasks, read the following files before doing project-specific reasoning, planning, implementation, debugging, or status reporting:
 
@@ -74,6 +76,7 @@ Update `WORKING_MEMORY.md` only when the session revealed durable information su
 
 ## Archive And Grooming
 
-- Keep `AGENTS.md`, `PROJECT_PROGRESS.md`, and `WORKING_MEMORY.md` at the workspace root.
+- Keep this canonical entry file, `PROJECT_PROGRESS.md`, and `WORKING_MEMORY.md` at the workspace root.
+- Keep any per-AI entry shims thin; do not duplicate these rules into them.
 - Archive older progress entries under `archive/project-progress/` when the main log becomes noisy.
 - Use `memory/grooming-checklist.md` for periodic cleanup.
