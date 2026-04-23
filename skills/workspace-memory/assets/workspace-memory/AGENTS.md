@@ -9,6 +9,8 @@ For non-trivial tasks, read the following files before doing project-specific re
 - `PROJECT_PROGRESS.md`
 - `WORKING_MEMORY.md`
 
+If the workspace uses `memory/index.md` and the target project or area is not obvious, read it before project-specific work.
+
 ## Scope
 
 - These instructions apply to the entire workspace root.
@@ -21,8 +23,9 @@ For any non-trivial task:
 
 1. Read `PROJECT_PROGRESS.md`.
 2. Read `WORKING_MEMORY.md`.
-3. Identify the target project or subdirectory.
-4. Use both files to align with recent progress, open issues, preferences, and constraints.
+3. If `memory/index.md` exists and the target project or area is unclear, read it.
+4. Identify the target project or subdirectory.
+5. Use the relevant memory files to align with recent progress, open issues, preferences, and constraints.
 
 You may skip steps 1 and 2 only for tasks that are clearly context-free, such as:
 
@@ -35,6 +38,8 @@ You may skip steps 1 and 2 only for tasks that are clearly context-free, such as
 
 - Use `PROJECT_PROGRESS.md` to understand recent work, resolved issues, open problems, and likely next steps.
 - Use `WORKING_MEMORY.md` to understand durable preferences, workflow habits, project constraints, and reusable lessons.
+- Use `memory/index.md` only as a pointer map when the workspace is large enough to need routing help.
+- Treat memory as a summary layer, not as ground truth. Verify recalled facts against the live workspace before relying on them for edits, plans, or status claims.
 - Prefer concise summaries and durable decisions over raw transcript-style notes.
 
 ## Session Closeout
@@ -77,6 +82,7 @@ Update `WORKING_MEMORY.md` only when the session revealed durable information su
 ## Archive And Grooming
 
 - Keep this canonical entry file, `PROJECT_PROGRESS.md`, and `WORKING_MEMORY.md` at the workspace root.
+- Use `memory/index.md` only when the workspace is large or has multiple active areas.
 - Keep any per-AI entry shims thin; do not duplicate these rules into them.
 - Archive older progress entries under `archive/project-progress/` when the main log becomes noisy.
 - Use `memory/grooming-checklist.md` for periodic cleanup.

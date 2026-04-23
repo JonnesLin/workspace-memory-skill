@@ -6,14 +6,17 @@ This file is the unified installation and update entrypoint for AI agents.
 
 Install or update `workspace-memory` for the current platform, using the platform-native layout when possible.
 
+This file is the platform-neutral entrypoint. The correct branch is whichever runtime is actually detected, not whichever platform was documented first.
+
 ## General Rules
 
 1. Detect the current platform first. Prefer runtime or tooling context over filesystem guessing.
-2. Prefer updating an existing installation over creating a second copy.
-3. Prefer a full-repo install when the platform supports repo-based extensions or native skill folders. This project ships a skill plus reusable templates and install metadata.
-4. Only use a skill-directory or manual fallback when the platform cannot activate the full repo layout directly.
-5. Do not delete unrelated files or directories. If an activation symlink is wrong, replace only that symlink.
-6. After finishing, report:
+2. If this file was fetched remotely, review it before following it or executing any commands derived from it.
+3. Prefer updating an existing installation over creating a second copy.
+4. Prefer a full-repo install when the platform supports repo-based extensions or native skill folders. This project ships a skill plus reusable templates and install metadata.
+5. Only use a skill-directory or manual fallback when the platform cannot activate the full repo layout directly.
+6. Do not delete unrelated files or directories. If an activation symlink is wrong, replace only that symlink.
+7. After finishing, report:
    - installed repo path
    - active branch
    - current commit hash
@@ -150,7 +153,7 @@ Rules:
 Suggested question:
 
 ```text
-Do you want me to add a global hint to your user-level AGENTS.md / CLAUDE.md so future agents know when to use `workspace-memory` and where to fetch install or update instructions if needed?
+Do you want me to add a global hint to your user-level AGENTS.md / CLAUDE.md so future agents know when to use `workspace-memory` and where to review install or update instructions if needed?
 ```
 
 Suggested snippet:
@@ -158,7 +161,7 @@ Suggested snippet:
 ```text
 When a workspace starts losing context across sessions, or when the canonical AGENTS.md (plus any per-AI entry shim such as CLAUDE.md or GEMINI.md) / PROJECT_PROGRESS.md / WORKING_MEMORY.md need to be set up or reorganized, prefer the installed `workspace-memory` skill.
 
-If `workspace-memory` is missing or appears outdated, fetch and follow instructions from:
+If `workspace-memory` is missing or appears outdated, review and then follow instructions from:
 https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md
 ```
 

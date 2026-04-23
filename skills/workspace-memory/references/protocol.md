@@ -21,17 +21,18 @@ Use this reference when setting up, auditing, or refactoring a workspace memory 
     copilot-instructions.md   # optional shim, only if GitHub Copilot is used
   PROJECT_PROGRESS.md
   WORKING_MEMORY.md
+  memory/
+    index.md            # optional pointer map for large or multi-project workspaces
+    grooming-checklist.md
   archive/
     project-progress/
-  memory/
-    grooming-checklist.md
 ```
 
 ## Entry File Model
 
 ### Canonical file
 
-Use `AGENTS.md` as the single source of truth for protocol and read/write rules. Codex, OpenAI-style agents, OpenCode, and Cursor all auto-load it by default.
+Use `AGENTS.md` as the single source of truth for protocol and read/write rules. Runtimes that support `AGENTS.md` directly should use it as the entry file. Runtimes that auto-load a different filename should use a thin shim that points here.
 
 ### Per-AI shims
 
@@ -47,6 +48,7 @@ Shim rules:
 
 - Keep each shim to a short pointer plus an empty overrides section.
 - Do not copy the canonical protocol into a shim.
+- Write the shim so a weaker agent can follow it without inference. Explicitly direct the agent to `AGENTS.md` and, for non-trivial tasks, the shared memory files.
 - Only create shims for AIs that are actually used in this workspace.
 - Delete unused shims during grooming.
 
@@ -80,6 +82,19 @@ Store:
 
 Prefer a short `Current Snapshot` section at the top for the active project, blocker, latest decision, and next likely step.
 
+### Optional `memory/index.md`
+
+Use only when the workspace is large enough that agents need routing help.
+
+Store:
+
+- active projects or subtrees
+- where to start reading for each area
+- links to project-specific docs or memory files
+- short navigation notes that help an agent find the right context quickly
+
+Do not store duplicate status that belongs in `PROJECT_PROGRESS.md`. Do not store durable rules that belong in `WORKING_MEMORY.md`.
+
 ### `WORKING_MEMORY.md`
 
 Use as curated durable memory.
@@ -92,6 +107,16 @@ Store only information that is still worth reading in future sessions:
 - durable project assumptions that still matter
 
 Do not use it as a time-series log.
+
+## Memory Freshness
+
+Treat shared memory as a summary and navigation layer, not as the ground-truth source of current state.
+
+Before relying on recalled memory for edits, planning, or status reporting:
+
+- verify the relevant detail against the current files, code, config, or git state
+- prefer the live workspace when memory and reality disagree
+- update the memory files when you discover a stale assumption that matters to future sessions
 
 ## Archive Policy
 
@@ -120,6 +145,12 @@ Do not create a separate archive for `WORKING_MEMORY.md` unless there is a stron
 - rewrite session-specific notes into durable lessons
 - remove notes that no longer change future behavior
 
+### Index grooming
+
+- delete stale pointers
+- keep navigation notes short
+- remove entries that duplicate current progress or durable policy
+
 ### Shim grooming
 
 - remove shim files for AIs that are no longer used in this workspace
@@ -130,10 +161,11 @@ Do not create a separate archive for `WORKING_MEMORY.md` unless there is a stron
 For non-trivial tasks:
 
 1. Read the canonical entry file (`AGENTS.md`); treat any per-AI shim as a redirect only.
-2. Read the top snapshot in `PROJECT_PROGRESS.md`.
-3. Read the recent relevant progress entries.
-4. Read `WORKING_MEMORY.md`.
-5. Read archive only if current files do not explain the needed history.
+2. If `memory/index.md` exists and the target project is unclear, the workspace has multiple active areas, or project-specific docs are likely to matter, read it next.
+3. Read the top snapshot in `PROJECT_PROGRESS.md`.
+4. Read the recent relevant progress entries.
+5. Read `WORKING_MEMORY.md`.
+6. Read archive only if current files do not explain the needed history.
 
 ## Default Write Path
 
@@ -153,8 +185,10 @@ If the workspace has no stronger preference, use:
 ## Failure Modes To Avoid
 
 - putting every session detail into `WORKING_MEMORY.md`
+- treating memory as current truth without verifying it against the live workspace
 - archiving too early and hiding active context
 - storing policies in three different files
+- turning `memory/index.md` into a duplicate status log
 - duplicating the canonical protocol into every per-AI shim
 - creating shims for AIs that are not actually used in this workspace
 - treating memory as a hard gate instead of a useful operating aid

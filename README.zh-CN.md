@@ -2,7 +2,7 @@
 
 [English README](README.md)
 
-一个用规范入口 `AGENTS.md`（以及针对不同 AI 的薄 shim，比如 `CLAUDE.md`、`GEMINI.md`）、`PROJECT_PROGRESS.md` 和 `WORKING_MEMORY.md` 为工作区建立轻量共享记忆体系的通用 skill。
+一个用规范入口 `AGENTS.md` 搭配薄入口 shim，为工作区建立轻量共享记忆体系的通用 skill。对于会自动读取其他入口文件名的运行时，可以用 shim 转发回 `AGENTS.md`。
 
 这是一个通用的 workspace memory skill 仓库，用来为工作区建立和维护一套共享记忆系统，核心围绕下面这些文件和目录：
 
@@ -10,10 +10,11 @@
 - `CLAUDE.md`、`GEMINI.md`、`.github/copilot-instructions.md`：可选的薄 shim，只转发到 `AGENTS.md`，只为实际使用的 AI 创建
 - `PROJECT_PROGRESS.md`
 - `WORKING_MEMORY.md`
+- `memory/index.md`：可选的指针文件，用于更大的工作区或多活项目
 - `archive/project-progress/`
 - `memory/grooming-checklist.md`
 
-Codex、OpenAI 风格的 agent、OpenCode 和 Cursor 原生就会读取 `AGENTS.md`，这几个工具不需要额外的 shim。
+任何原生支持读取 `AGENTS.md` 的运行时都可以直接使用规范入口。会自动读取其他文件名的运行时，则应使用一个明确指向 `AGENTS.md` 的薄 shim。
 
 这个仓库当前提供一个 skill：
 
@@ -27,18 +28,23 @@ Codex、OpenAI 风格的 agent、OpenCode 和 Cursor 原生就会读取 `AGENTS.
 - 把零散笔记迁移成结构化的 memory 系统
 - 让项目进展日志保持可读，而不是不断膨胀成噪音
 - 区分近期进展和长期有效的 working memory
+- 在多个活跃目录之间扩展共享 memory，而不把它做成第二套文档系统
 - 在不过度设计的前提下，引入 archive 和定期整理机制
+
+核心模型仍然保持轻量。对于更大的工作区，可以额外加上 `memory/index.md` 作为指针层。memory 文件应被视为导航和摘要辅助，agent 在依赖其中的回忆来做修改、规划或状态判断前，应先和当前工作区真实状态核对。
 
 ## 安装方式
 
-可以直接读取下面这个安装说明：
+先阅读下面的安装说明：
 
 `https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md`
+
+尤其当这个文件是从远程 URL 抓取下来的时候，先 review 再照着执行会更稳妥。
 
 典型提示词：
 
 ```text
-Fetch and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md
+Fetch, review, and follow instructions from https://raw.githubusercontent.com/JonnesLin/workspace-memory-skill/refs/heads/main/INSTALL.agent.md
 ```
 
 ## 使用方式
@@ -81,4 +87,4 @@ README.zh-CN.md
 
 - `SKILL.md`：agent 执行流程
 - `references/protocol.md`：详细协议和设计边界
-- `assets/workspace-memory/`：可复用模板文件
+- `assets/workspace-memory/`：可复用模板文件，包含可选的 `memory/index.md` 指针模板

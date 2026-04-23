@@ -18,6 +18,13 @@ Use this checklist when the shared memory starts to feel noisy, repetitive, or e
 - Can a project-specific note be rewritten into a cleaner durable lesson
 - Is every remaining note still worth reading in future sessions
 
+## `memory/index.md` (if present)
+
+- Does it still help route agents to the right project or subtree
+- Are any entries stale or no longer active
+- Is it staying pointer-oriented instead of becoming a second status log
+- Should a note move into `PROJECT_PROGRESS.md` or `WORKING_MEMORY.md` instead
+
 ## Archive Rules
 
 - Archive progress logs, not durable memory, by default
